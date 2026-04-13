@@ -1,25 +1,31 @@
- # YS_ODCZYT — Aplikacja API Allegro
+ # YOU SELL — Aplikacje API Allegro
 
-  ## Informacje o aplikacji
+  ## Informacje
 
-  **YS_ODCZYT** to wewnętrzna aplikacja YOU SELL Sp. z o.o. — agencji e-commerce specjalizującej się w obsłudze sprzedawców na platformie Allegro.
+  Aplikacje wewnętrzne **YOU SELL Sp. z o.o.** — agencji e-commerce specjalizującej się w obsłudze sprzedawców na platformie Allegro.
 
-  ## Przeznaczenie
+  ## Aplikacje odczytu danych
 
-  Odczyt danych sprzedażowych klientów agencji w celu:
-  - Monitorowania cen ofert
-  - Śledzenia zamówień i transakcji
-  - Generowania raportów analitycznych
-  - Kontroli cen minimalnych
+  Odczyt danych sprzedażowych klientów agencji w celu monitorowania cen, śledzenia zamówień i generowania raportów analitycznych.
 
-  ## Zakres danych (tylko odczyt)
+  ### Zakres danych (tylko odczyt)
 
   - Zamówienia i transakcje (order events)
   - Oferty i parametry cenowe (offers)
   - Statystyki sprzedaży (sale statistics)
   - Dane rozliczeniowe (billing)
 
-  Aplikacja działa wyłącznie w trybie odczytu — nie modyfikuje ofert, cen ani zamówień.
+  Aplikacje działają wyłącznie w trybie odczytu — nie modyfikują ofert, cen ani zamówień.
+
+  ## Aplikacje raportów sprzedażowych
+
+  Automatyczne generowanie i wysyłka raportów sprzedażowych dla klientów agencji.
+
+  ### Zakres danych
+
+  - Statystyki sprzedaży i zamówień
+  - Dane do raportów tygodniowych i miesięcznych
+  - Analityka efektywności sprzedaży
 
   ## Operator
 
