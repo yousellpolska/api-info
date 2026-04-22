@@ -1,41 +1,63 @@
- # YOU SELL — Aplikacje API Allegro
+# YOU SELL — Aplikacje API Allegro
 
-  ## Informacje
+## Informacje
 
-  Aplikacje wewnętrzne **YOU SELL Sp. z o.o.** — agencji e-commerce specjalizującej się w obsłudze sprzedawców na platformie Allegro.
+Aplikacje wewnętrzne **YOU SELL Sp. z o.o.** — agencji e-commerce specjalizującej się w obsłudze sprzedawców na platformie Allegro.
 
-  ## Aplikacje odczytu danych
+## Format User-Agent
 
-  Odczyt danych sprzedażowych klientów agencji w celu monitorowania cen, śledzenia zamówień i generowania raportów analitycznych.
+Wszystkie zapytania do API Allegro identyfikowane są nagłówkiem:
 
-  ### Zakres danych (tylko odczyt)
+```
+<NazwaAplikacji>/1.0.0 (+https://github.com/yousellpolska/api-info)
+```
 
-  - Zamówienia i transakcje (order events)
-  - Oferty i parametry cenowe (offers)
-  - Statystyki sprzedaży (sale statistics)
-  - Dane rozliczeniowe (billing)
+Zgodnie z art. 3.4.c Regulaminu REST API Allegro (wymóg obowiązkowy od 30.06.2026).
 
-  Aplikacje działają wyłącznie w trybie odczytu — nie modyfikują ofert, cen ani zamówień.
+## Aplikacje obsługi konta klienta
 
-  ## Aplikacje raportów sprzedażowych
+Aplikacje rejestrowane na kontach poszczególnych klientów agencji. Każdy klient autoryzuje aplikację poprzez OAuth2 Device Code Flow, co umożliwia YOU SELL prowadzenie dla niego obsługi na platformie Allegro.
 
-  Automatyczne generowanie i wysyłka raportów sprzedażowych dla klientów agencji.
+### Zakres uprawnień
 
-  ### Zakres danych
+| Scope | Opis |
+|-------|------|
+| `allegro:api:sale:offers:read` | Odczyt danych o ofertach |
+| `allegro:api:sale:offers:write` | Tworzenie, edycja, łączenie i zamykanie ofert |
+| `allegro:api:sale:settings:read` | Odczyt ustawień sprzedaży |
+| `allegro:api:orders:read` | Odczyt informacji o zamówieniach |
+| `allegro:api:billing:read` | Odczyt salda i opłat na koncie |
+| `allegro:api:payments:read` | Odczyt historii płatności |
+| `allegro:api:campaigns` | Zgłaszanie ofert do kampanii promocyjnych Allegro (Strefa Okazji, oznaczenia SUPERCENA / GNC) |
 
-  - Statystyki sprzedaży i zamówień
-  - Dane do raportów tygodniowych i miesięcznych
-  - Analityka efektywności sprzedaży
+### Obszary zastosowania
 
-  ## Operator
+- Monitorowanie cen minimalnych i zmian ofert
+- Śledzenie zamówień i transakcji
+- Analiza kosztów sprzedaży i rozliczeń
+- Generowanie raportów analitycznych i forecastów
+- Zarządzanie kartami ofert (opis, parametry, zdjęcia lifestyle PKU)
+- Zgłaszanie ofert do kampanii promocyjnych Allegro (Strefa Okazji, oznaczenia SUPERCENA / GNC)
 
-  **YOU SELL Sp. z o.o.**
-  ul. Tczewska 87h/2, 83-112 Rokitki
+## Aplikacja agencyjna
 
-  - Email: biuro@yousell.pl
-  - Tel: 505 707 470
-  - WWW: https://yousell.pl
+Aplikacja zarejestrowana na koncie agencyjnym YOU SELL — do zarządzania kampaniami Allegro Ads klientów agencji poprzez Agency ADS API.
 
-  ## Wersja
+### Zakres uprawnień
 
-  1.0.0
+| Scope | Opis |
+|-------|------|
+| `allegro:api:ads` | Zarządzanie kampaniami Allegro Ads |
+
+## Operator
+
+**YOU SELL Sp. z o.o.**
+ul. Tczewska 87h/2, 83-112 Rokitki
+
+- Email: biuro@yousell.pl
+- Tel: 505 707 470
+- WWW: https://yousell.pl
+
+## Wersja
+
+2.0.0 (22.04.2026) — zunifikowana konwencja nazw aplikacji `YOU SELL SYSTEM - <nazwa klienta>`
