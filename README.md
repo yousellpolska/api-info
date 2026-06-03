@@ -56,19 +56,16 @@ Aplikacja nie posiada uprawnień do edycji ofert.
 ### 3. YOU SELL DP - <nazwa konta>
 
 OAuth grant: device_code
-Przeznaczenie: zarządzanie cenami ofert (dynamic pricing) oraz
-zgłaszanie ofert do kampanii promocyjnych Allegro. Uprawnienie
-allegro:api:sale:offers:write wykorzystywane jest wyłącznie do
-modyfikacji ceny — aplikacja nie zmienia opisu, parametrów ani
-zdjęć ofert.
+Przeznaczenie: zarządzanie cenami ofert (dynamic pricing).
+Uprawnienie allegro:api:sale:offers:write wykorzystywane jest
+wyłącznie do modyfikacji ceny — aplikacja nie zmienia opisu,
+parametrów ani zdjęć ofert.
 
 | Scope                            | Opis                              |
 |----------------------------------|-----------------------------------|
 | allegro:api:sale:offers:read     | Odczyt danych o ofertach          |
 | allegro:api:sale:offers:write    | Modyfikacja ceny ofert            |
 | allegro:api:orders:read          | Odczyt informacji o zamówieniach  |
-| allegro:api:campaigns            | Zgłaszanie ofert do kampanii      |
-|                                  | i programów promocyjnych Allegro  |
 
 ## Obszary zastosowania
 
@@ -89,6 +86,11 @@ ul. Tczewska 87h/2, 83-112 Rokitki
 - WWW: https://yousell.pl
 
 ## Wersja
+
+3.1.0 (03.06.2026) — rozdzielenie kompetencji: zgłaszanie ofert do
+kampanii i programów promocyjnych Allegro przeniesione wyłącznie
+do aplikacji YOU SELL SYSTEM; aplikacja YOU SELL DP ograniczona
+wyłącznie do dynamic pricing (usunięcie scope allegro:api:campaigns).
 
 3.0.0 (22.05.2026) — rozdzielenie aplikacji na 3 role
 (RAPORTY / SYSTEM / DP) wg zasady najmniejszych uprawnień;
