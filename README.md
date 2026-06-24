@@ -38,22 +38,7 @@ aplikacja ma wyłącznie scope'y niezbędne do swojej roli. Każdy
 sprzedawca autoryzuje aplikacje samodzielnie przez OAuth2 i kontroluje
 ich zakres niezależnie od innych sprzedawców.
 
-### 1. YOU SELL RAPORTY - <nazwa konta>
-
-OAuth grant: authorization_code
-Przeznaczenie: odczyt danych sprzedażowych i generowanie raportów
-analitycznych. Aplikacja wyłącznie odczytuje dane — niczego nie
-modyfikuje na koncie sprzedawcy.
-
-| Scope                            | Opis                              |
-|----------------------------------|-----------------------------------|
-| allegro:api:sale:offers:read     | Odczyt danych o ofertach          |
-| allegro:api:sale:settings:read   | Odczyt ustawień sprzedaży         |
-| allegro:api:orders:read          | Odczyt informacji o zamówieniach  |
-| allegro:api:billing:read         | Odczyt salda i opłat na koncie    |
-| allegro:api:payments:read        | Odczyt historii płatności         |
-
-### 2. YOU SELL SYSTEM - <nazwa konta>
+### 1. YOU SELL SYSTEM - <nazwa konta>
 
 OAuth grant: device_code
 Przeznaczenie: odczyt danych do budowy bazy analitycznej oraz
@@ -70,7 +55,7 @@ Aplikacja nie posiada uprawnień do edycji ofert.
 | allegro:api:campaigns            | Zgłaszanie ofert do kampanii      |
 |                                  | i programów promocyjnych Allegro  |
 
-### 3. YOU SELL DP - <nazwa konta>
+### 2. YOU SELL DP - <nazwa konta>
 
 OAuth grant: device_code
 Przeznaczenie: zarządzanie cenami ofert (dynamic pricing).
@@ -111,6 +96,13 @@ naruszeń regulaminu API prosimy kierować na **tomasz@yousell.pl**
 techniczny i compliance).
 
 ## Wersja
+
+3.3.0 (24.06.2026) — wycofanie aplikacji YOU SELL RAPORTY z modelu
+operacyjnego. Funkcje odczytu danych sprzedażowych i generowania
+raportów analitycznych realizowane są obecnie przez aplikację
+YOU SELL SYSTEM, która posiada wymagane scope'y odczytu w ramach
+jednej rejestracji per sprzedawca (ograniczenie liczby autoryzacji
+po stronie sprzedawcy).
 
 3.2.0 (08.06.2026) — doprecyzowanie modelu agencyjnego: jawne
 określenie roli **agencji marketingowej** świadczącej usługi
