@@ -32,42 +32,48 @@ aplikacji autoryzowanej przez sprzedawcę X).
 
 ## Model aplikacji
 
-Dla każdego obsługiwanego konta sprzedawcy funkcje są rozdzielone na
-osobne aplikacje zgodnie z zasadą najmniejszych uprawnień — każda
-aplikacja ma wyłącznie scope'y niezbędne do swojej roli. Każdy
-sprzedawca autoryzuje aplikacje samodzielnie przez OAuth2 i kontroluje
-ich zakres niezależnie od innych sprzedawców.
+Dla każdego obsługiwanego konta sprzedawcy funkcjonuje **jedna aplikacja
+per sprzedawca** — YOU SELL DP — obejmująca wszystkie funkcje operacyjne
+(analityka, kampanie, dynamic pricing). Każdy sprzedawca autoryzuje
+aplikację samodzielnie przez OAuth2 i kontroluje jej zakres niezależnie
+od innych sprzedawców. Konsolidacja z modelu dwu-aplikacyjnego
+(SYSTEM + DP) do jednej apki nastąpiła 14.08.2026 zgodnie z wymogiem
+regulaminu REST API Allegro obowiązującym od 01.09.2026 (limit 1
+aktywna aplikacja per konto sprzedawcy).
 
-### 1. YOU SELL SYSTEM - <nazwa konta>
-
-OAuth grant: device_code
-Przeznaczenie: odczyt danych do budowy bazy analitycznej oraz
-zgłaszanie ofert do kampanii i programów promocyjnych Allegro.
-Aplikacja nie posiada uprawnień do edycji ofert.
-
-| Scope                            | Opis                              |
-|----------------------------------|-----------------------------------|
-| allegro:api:sale:offers:read     | Odczyt danych o ofertach          |
-| allegro:api:sale:settings:read   | Odczyt ustawień sprzedaży         |
-| allegro:api:orders:read          | Odczyt informacji o zamówieniach  |
-| allegro:api:billing:read         | Odczyt salda i opłat na koncie    |
-| allegro:api:payments:read        | Odczyt historii płatności         |
-| allegro:api:campaigns            | Zgłaszanie ofert do kampanii      |
-|                                  | i programów promocyjnych Allegro  |
-
-### 2. YOU SELL DP - <nazwa konta>
+### YOU SELL DP - &lt;nazwa konta&gt;
 
 OAuth grant: device_code
-Przeznaczenie: zarządzanie cenami ofert (dynamic pricing).
-Uprawnienie allegro:api:sale:offers:write wykorzystywane jest
+Przeznaczenie: skonsolidowana aplikacja operacyjna dla obsługi konta
+sprzedawcy — budowa bazy analitycznej, zgłaszanie ofert do kampanii
+i programów promocyjnych, zarządzanie cenami ofert (dynamic pricing).
+Uprawnienie `allegro:api:sale:offers:write` wykorzystywane jest
 wyłącznie do modyfikacji ceny — aplikacja nie zmienia opisu,
-parametrów ani zdjęć ofert.
+parametrów ani zdjęć ofert. Uprawnienie `allegro:api:sale:settings:write`
+wykorzystywane jest wyłącznie do zarządzania ustawieniami sprzedaży
+w zakresie umożliwiającym prawidłowe działanie automatyzacji cenowej
+(np. minimalna cena, waluta).
 
-| Scope                            | Opis                              |
-|----------------------------------|-----------------------------------|
-| allegro:api:sale:offers:read     | Odczyt danych o ofertach          |
-| allegro:api:sale:offers:write    | Modyfikacja ceny ofert            |
-| allegro:api:orders:read          | Odczyt informacji o zamówieniach  |
+| Scope                              | Opis                                        |
+|------------------------------------|---------------------------------------------|
+| allegro:api:sale:offers:read       | Odczyt danych o ofertach                    |
+| allegro:api:sale:offers:write      | Modyfikacja ceny ofert                      |
+| allegro:api:sale:settings:read     | Odczyt ustawień sprzedaży                   |
+| allegro:api:sale:settings:write    | Modyfikacja ustawień sprzedaży (min. cena)  |
+| allegro:api:orders:read            | Odczyt informacji o zamówieniach            |
+| allegro:api:billing:read           | Odczyt salda i opłat na koncie              |
+| allegro:api:payments:read          | Odczyt historii płatności                   |
+| allegro:api:campaigns              | Zgłaszanie ofert do kampanii                |
+|                                    | i programów promocyjnych Allegro            |
+
+### YOU SELL SYSTEM - &lt;nazwa konta&gt; — DEPRECATED
+
+Aplikacja **wycofana z użytku 14.08.2026** w ramach konsolidacji do
+jednej apki per sprzedawca (YOU SELL DP). Wszystkie funkcje odczytu
+danych sprzedażowych, kampanii i programów promocyjnych realizowane są
+obecnie przez YOU SELL DP. Aplikacje YOU SELL SYSTEM zostaną usunięte
+z panelu Allegro Developer do 28.08.2026 (przed wejściem w życie
+nowego regulaminu 01.09.2026).
 
 ## Obszary zastosowania
 
@@ -96,6 +102,17 @@ naruszeń regulaminu API prosimy kierować na **tomasz@yousell.pl**
 techniczny i compliance).
 
 ## Wersja
+
+3.4.0 (14.08.2026) — konsolidacja do jednej aplikacji per sprzedawca
+(YOU SELL DP). Funkcje aplikacji YOU SELL SYSTEM (odczyt danych
+analitycznych, zgłaszanie ofert do kampanii, odczyt zamówień i
+rozliczeń) przeniesione do YOU SELL DP z rozszerzonym zakresem
+scope. Aplikacje YOU SELL SYSTEM oznaczone jako DEPRECATED —
+usunięcie zaplanowane na 28.08.2026. Konsolidacja zgodna z wymogiem
+regulaminu REST API Allegro obowiązującym od 01.09.2026 (limit
+1 aktywna aplikacja per konto sprzedawcy). YOU SELL DP obsługuje
+teraz 8 scope OAuth2 zamiast dotychczasowych 3 — pełen zakres
+uprawnień określony w sekcji "YOU SELL DP" powyżej.
 
 3.3.0 (24.06.2026) — wycofanie aplikacji YOU SELL RAPORTY z modelu
 operacyjnego. Funkcje odczytu danych sprzedażowych i generowania
