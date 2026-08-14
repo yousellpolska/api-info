@@ -66,14 +66,28 @@ w zakresie umożliwiającym prawidłowe działanie automatyzacji cenowej
 | allegro:api:campaigns              | Zgłaszanie ofert do kampanii                |
 |                                    | i programów promocyjnych Allegro            |
 
-### YOU SELL SYSTEM - &lt;nazwa konta&gt; — DEPRECATED
+### YOU SELL SYSTEM - &lt;nazwa konta&gt; — w trakcie wycofywania
 
-Aplikacja **wycofana z użytku 14.08.2026** w ramach konsolidacji do
-jednej apki per sprzedawca (YOU SELL DP). Wszystkie funkcje odczytu
-danych sprzedażowych, kampanii i programów promocyjnych realizowane są
-obecnie przez YOU SELL DP. Aplikacje YOU SELL SYSTEM zostaną usunięte
-z panelu Allegro Developer do 28.08.2026 (przed wejściem w życie
-nowego regulaminu 01.09.2026).
+Aplikacja **nadal aktywna** w panelu Allegro Developer, ale od 14.08.2026
+**nieużywana operacyjnie** — wszystkie funkcje (odczyt danych sprzedażowych,
+kampanie, zamówienia, rozliczenia) przejęte przez YOU SELL DP w ramach
+konsolidacji do jednej apki per sprzedawca. Aplikacje YOU SELL SYSTEM
+zostaną fizycznie usunięte z panelu Allegro Developer do 28.08.2026
+(przed wejściem w życie nowego regulaminu REST API Allegro 01.09.2026).
+W okresie przejściowym (14-28.08.2026) apka pozostaje aktywna jako
+bezpiecznik awaryjny — nie wysyła żadnych requestów do API Allegro.
+
+Scope (bez zmian względem v3.3.0):
+
+| Scope                            | Opis                              |
+|----------------------------------|-----------------------------------|
+| allegro:api:sale:offers:read     | Odczyt danych o ofertach          |
+| allegro:api:sale:settings:read   | Odczyt ustawień sprzedaży         |
+| allegro:api:orders:read          | Odczyt informacji o zamówieniach  |
+| allegro:api:billing:read         | Odczyt salda i opłat na koncie    |
+| allegro:api:payments:read        | Odczyt historii płatności         |
+| allegro:api:campaigns            | Zgłaszanie ofert do kampanii      |
+|                                  | i programów promocyjnych Allegro  |
 
 ## Obszary zastosowania
 
@@ -102,6 +116,11 @@ naruszeń regulaminu API prosimy kierować na **tomasz@yousell.pl**
 techniczny i compliance).
 
 ## Wersja
+
+3.4.1 (14.08.2026) — doprecyzowanie: aplikacje YOU SELL SYSTEM
+pozostają aktywne w panelu Allegro Developer w okresie przejściowym
+14-28.08.2026 (bezpiecznik awaryjny), natomiast nie są używane
+operacyjnie od 14.08.2026 (wszystkie requesty realizuje YOU SELL DP).
 
 3.4.0 (14.08.2026) — konsolidacja do jednej aplikacji per sprzedawca
 (YOU SELL DP). Funkcje aplikacji YOU SELL SYSTEM (odczyt danych
